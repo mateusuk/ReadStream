@@ -32,8 +32,8 @@ function Cards() {
 
   return (
     <StyledEngineProvider injectFirst>
-      <Card sx={{ maxWidth: 200, m: '7rem' }}>
-        <CardMedia
+      <Card className='card' sx={{ maxWidth: 200, m: '7rem' }}>
+        <CardMedia 
           component='img'
           image='https://picsum.photos/200'
           alt='book card'
@@ -52,7 +52,7 @@ function Cards() {
           </ExpandMore>
         </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent sx={{textAlign: 'center'}}>
+            <CardContent  sx={{textAlign: 'center'}}>
               <Typography className='title'>
                 Title
               </Typography>
