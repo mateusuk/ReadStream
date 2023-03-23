@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const pages = ['Favorites', 'Bestsellers'];
@@ -82,7 +82,7 @@ function ResponsiveAppBar() {
                         {pages.map((page) => (
                             <MenuItem key={page} onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">
-                                    <Link style={{textDecoration: 'none', color: 'black'}} to={`/${page}`}>{page}</Link>
+                                {page} {/* <Link style={{textDecoration: 'none', color: 'black'}} to={`/${page}`}>{page}</Link> */}
                                 </Typography>
                             </MenuItem>
                         ))}
@@ -115,7 +115,7 @@ function ResponsiveAppBar() {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            <Link style={{ textDecoration: 'none', color: 'white' }} to={`/${page}`}>{page}</Link>
+                            {page} {/* <Link style={{ textDecoration: 'none', color: 'white' }} to={`/${page}`}>{page}</Link> */}
                         </Button>
                         ))}
                     </Box>
