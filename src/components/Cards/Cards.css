@@ -1,0 +1,43 @@
+
+.MuiCardActions-root {
+    display: none;
+    height: 2.4rem;
+}
+
+.MuiPaper-root {
+    transition: .6s ease-out;
+}
+
+.MuiPaper-root:hover {
+    transition: .6s ease-in;
+    transform: scale(1.5);
+}
+
+.MuiPaper-root:hover > .MuiCardActions-root {
+    display: flex;
+}
+
+.MuiSvgIcon-root {
+    zoom: 0.6;
+}
+
+.MuiTypography-root {
+    font-size: 7pt;
+}
+
+.MuiButtonBase-root {
+    font-size: 7pt;
+}
+
+.title {
+    font-size: 9pt;
+    padding-bottom: 1px;
+}
+
+.author {
+    font-size: 8pt;
+}
+
+.MuiCardContent-root {
+    padding-bottom: 5px !important;
+}
