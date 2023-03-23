@@ -4,11 +4,11 @@
     height: 2.4rem;
 }
 
-.MuiPaper-root {
+.card {
     transition: .6s ease-out;
 }
 
-.MuiPaper-root:hover {
+.card:hover {
     transition: .6s ease-in;
     transform: scale(1.5);
 }
