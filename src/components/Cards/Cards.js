@@ -26,6 +26,27 @@ const ExpandMore = styled((props) => {
 function Cards(props) {
   const [expanded, setExpanded] = React.useState(false);
 
+  // code to save card in localstorage
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  const handleFavoriteClick = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorite = favorites.some(favorite => favorite.title === props.title);
+
+    if (!isAlreadyFavorite) {
+      favorites.push(props);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  }
+
+  React.useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isAlreadyFavorite = favorites.some(favorite => favorite.title === props.title);
+    setIsFavorite(isAlreadyFavorite);
+  }, [props.title]);
+
+// -----------------------------------------------------------------------------------
   const handleExpandClick = () => {
     setExpanded(!expanded);   
   };
@@ -40,7 +61,11 @@ function Cards(props) {
             alt='book card'
           />
           <CardActions disableSpacing>
-            <IconButton aria-label='add to favorites'>
+            <IconButton 
+              aria-label='add to favorites'
+              onClick={handleFavoriteClick}
+              color={isFavorite ? 'error' : 'default'}
+            >
               <FavoriteIcon />
             </IconButton>
             <ExpandMore 
