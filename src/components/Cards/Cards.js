@@ -37,6 +37,10 @@ function Cards(props) {
       favorites.push(props);
       localStorage.setItem('favorites', JSON.stringify(favorites));
       setIsFavorite(true);
+    } else {
+      const updatedFavorites = favorites.filter(favorite => favorite.title !== props.title);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
     }
   }
 
