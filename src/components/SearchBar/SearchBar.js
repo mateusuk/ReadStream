@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import { searchBooks } from '../../utils/API';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Cards from '../Cards/Cards';
 
 
@@ -82,14 +84,28 @@ import Cards from '../Cards/Cards';
       </div>
 
       <div className="results-container">
+        <Box sx={{ maxWidth: '85%', marginLeft: '12%' }}>
+          <Grid
+            container
+            spacing={2}
+            direction='row'
+            marginTop='5rem'
+            marginBottom='5rem'
+          >
         {searchResults.map(book => (
-          <Cards key={book.id} 
-          title={book.volumeInfo.title} 
-          author={book.volumeInfo.authors[0]} 
-          description={book.volumeInfo.description} 
-          link={book.volumeInfo.previewLink}
-          image={book.volumeInfo.imageLinks?.thumbnail} />
-        ))}
+          <Grid item xs={3}>
+            <Cards 
+              key={book.id} 
+              title={book.volumeInfo.title} 
+              author={book.volumeInfo.authors[0]} 
+              description={book.volumeInfo.description} 
+              link={book.volumeInfo.previewLink}
+              image={book.volumeInfo.imageLinks?.thumbnail}
+             />
+            </Grid>
+          ))}
+          </Grid>
+        </Box>
       </div>
     </div>
   );
