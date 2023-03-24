@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import Background from './Background.png'
 // import { Link } from 'react-router-dom';
 
 
@@ -27,10 +28,14 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar 
+        position="sticky"
+        sx={{
+            backgroundImage: `url(${Background})`,
+        }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AutoStoriesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <AutoStoriesIcon sx={{ display: { xs: 'none', md: 'flex' }, color: 'black', mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -42,7 +47,7 @@ function ResponsiveAppBar() {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: 'black',
                             textDecoration: 'none',
                         }}
                     >
@@ -56,7 +61,7 @@ function ResponsiveAppBar() {
                         aria-controls="menu-appbar"
                         aria-haspopup="true"
                         onClick={handleOpenNavMenu}
-                        color="inherit"
+                        sx={{ color: 'black' }}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -89,7 +94,7 @@ function ResponsiveAppBar() {
                     </Menu>
 
                     </Box>
-                    <AutoStoriesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <AutoStoriesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: "black" }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -102,18 +107,18 @@ function ResponsiveAppBar() {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: 'black',
                             textDecoration: 'none',
                         }}
                     >
                     ReadStream
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse', color: 'black'}}>
                         {pages.map((page) => (
                         <Button
                             key={page}
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ my: 2, color: 'black', display: 'block' }}
                         >
                             {page} {/* <Link style={{ textDecoration: 'none', color: 'white' }} to={`/${page}`}>{page}</Link> */}
                         </Button>
