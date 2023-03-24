@@ -97,7 +97,7 @@ import Cards from '../Cards/Cards';
             <Cards 
               key={book.id} 
               title={book.volumeInfo.title} 
-              author={book.volumeInfo.authors[0]} 
+              author={book.volumeInfo.authors} 
               description={book.volumeInfo.description} 
               link={book.volumeInfo.previewLink}
               image={book.volumeInfo.imageLinks?.thumbnail}
