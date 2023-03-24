@@ -7,9 +7,9 @@ const Footer = () => {
             <Container 
                 maxWidth="xl"
                 sx={{ 
-                        mt: 'auto', 
-                        backgroundColor: "blue", 
-                        borderTop: 1, 
+                        mt: 'auto',  
+                        borderTop: 1,
+                        borderTopColor: '#000000', 
                         width: '100%'}} 
             >
                 <Grid 
@@ -27,8 +27,9 @@ const Footer = () => {
                         <AutoStoriesIcon 
                             sx={{ 
                                 display:'flex', 
-                                mr: 1, color: 'whitesmoke', 
-                                fontSize: 14 }} 
+                                mr: 1, 
+                                color: 'black', 
+                                fontSize: 16 }} 
                         />
                         <Typography
                             variant="h6"
@@ -42,7 +43,7 @@ const Footer = () => {
                                 fontFamily: 'monospace',
                                 fontWeight: 600,
                                 letterSpacing: '.2rem',
-                                color: 'whitesmoke',
+                                color: 'black',
                                 textDecoration: 'none',
                                 fontSize: 14,
                             }}
@@ -60,7 +61,7 @@ const Footer = () => {
                             width: '350px', 
                             pt: 1, 
                             pb: 1, 
-                            color: 'whitesmoke'}}>
+                            color: 'black'}}>
                         <Typography 
                             sx={{
                                 fontSize: 14, 
