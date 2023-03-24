@@ -32,6 +32,7 @@ function ResponsiveAppBar() {
         position="sticky"
         sx={{
             backgroundImage: `url(${Background})`,
+            mb: 5,
         }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
