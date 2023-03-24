@@ -15,10 +15,8 @@ import Cards from '../Cards/Cards';
  function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
-  
   const [searchResults, setSearchResults] = useState([]);
-  
-  
+  const [error, setError] = useState(null);
 
   
    const handleSearch = async () => {
@@ -26,13 +24,16 @@ import Cards from '../Cards/Cards';
       const data = await searchBooks(searchTerm || selectedOption);
       console.log(data.items);
       setSearchResults(data.items || []);
-      
-      
-
     } catch (error) {
       console.error(error);
     }
-  };
+    if (searchResults !== []) { setError(null); }
+
+    if (searchTerm.length === 0) {
+      setError('Please enter a search query!');
+      setSearchResults([]);
+    }
+  }
  
   const handleInputChange = (event, value) => {
     setSearchTerm(value);
@@ -47,7 +48,7 @@ import Cards from '../Cards/Cards';
       handleSearch();
     }
   };
-  
+
   return (
     <div>
       <div className="container">
@@ -59,6 +60,7 @@ import Cards from '../Cards/Cards';
             options={books.map((option) => option.title)}
             onInputChange={handleInputChange}
             onChange={handleChange}
+          
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -80,9 +82,10 @@ import Cards from '../Cards/Cards';
               />
             )}
           />
+          <div className='input-error'> {error} </div>
         </Stack>
       </div>
-
+     
       <div className="results-container">
         <Box sx={{ maxWidth: '85%', marginLeft: '12%' }}>
           <Grid
