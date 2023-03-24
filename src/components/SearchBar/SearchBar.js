@@ -83,12 +83,14 @@ import Cards from '../Cards/Cards';
 
       <div className="results-container">
         {searchResults.map(book => (
-          <Cards key={book.id} title={book.volumeInfo.title} author={book.volumeInfo.authors[0]} description={book.volumeInfo.description} imagem={book.volumeInfo.imageLinks?.thumbnail} />
+          <Cards key={book.id} 
+          title={book.volumeInfo.title} 
+          author={book.volumeInfo.authors[0]} 
+          description={book.volumeInfo.description} 
+          link={book.volumeInfo.previewLink}
+          image={book.volumeInfo.imageLinks?.thumbnail} />
         ))}
       </div>
-
-    
-      
     </div>
   );
 }
