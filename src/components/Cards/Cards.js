@@ -58,8 +58,8 @@ function Cards(props) {
   if(props.image !== undefined && props.link !== undefined) {
     return (
       <StyledEngineProvider injectFirst>
-        <Card className='card' sx={{ maxWidth: 200, minHeight: 200}}>
-          <CardMedia 
+        <Card className='card' sx={{ maxWidth: 200 }}>
+          <CardMedia sx={{ height: 300 }}
             component='img'
             image={props.image}
             alt='book card'
@@ -100,8 +100,6 @@ function Cards(props) {
       </StyledEngineProvider>
     );
   }
-
-  
 }
 
 export default Cards;
