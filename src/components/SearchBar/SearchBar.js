@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState } from 'react';
 import "./SearchBar.css";
 import TextField from '@mui/material/TextField';
@@ -108,10 +109,11 @@ import Cards from '../Cards/Cards';
                     image={book.volumeInfo.imageLinks?.thumbnail}
                   />
                 </Grid>
-                );
+                )
               }
+              return null;
             }))
-          };
+          }
           </Grid>
         </Box>
       </div>
