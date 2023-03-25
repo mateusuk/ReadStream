@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./SearchBar.css";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -11,14 +11,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Cards from '../Cards/Cards';
 
-
  function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null);
 
-  
    const handleSearch = async () => {
     try {
       const data = await searchBooks(searchTerm || selectedOption);
@@ -43,11 +41,14 @@ import Cards from '../Cards/Cards';
     setSelectedOption(value);
   };
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = async (event) => {
     if (event.key === 'Enter') {
-      handleSearch();
+      await handleSearch();
+      scrollToRef.current.scrollIntoView();
     }
   };
+
+  const scrollToRef = useRef();
 
   return (
     <div>
@@ -73,7 +74,7 @@ import Cards from '../Cards/Cards';
                   ...params.InputProps,
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Button onClick={handleSearch} >
+                      <Button onClick={ async () => { await handleSearch(); scrollToRef.current.scrollIntoView(); }} >
                         <SearchIcon />
                       </Button>
                     </InputAdornment>
@@ -90,10 +91,11 @@ import Cards from '../Cards/Cards';
         <Box sx={{ maxWidth: '85%', marginLeft: '12%' }}>
           <Grid
             container
+            ref={scrollToRef}
             spacing={2}
             direction='row'
-            marginTop='5rem'
             marginBottom='5rem'
+            marginTop='2.5rem'
           >
         {searchResults.map(book => (
           <Grid item xs={3}>
@@ -113,7 +115,6 @@ import Cards from '../Cards/Cards';
     </div>
   );
 }
-
 
 const books = [
   { title: 'The Shawshank Redemption'},

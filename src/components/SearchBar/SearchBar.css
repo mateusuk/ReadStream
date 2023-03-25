@@ -1,8 +1,10 @@
 .container{
-    display: flex;
-   justify-content: center;
-   align-items: center;
-   /* height: 100vh; */
+    display:flex;
+    width: 100vw;
+    height: 75vh;
+    padding: 1rem;
+    justify-content:center;
+    align-items:center;
 }
 
 .MuiStack-root{
@@ -15,4 +17,8 @@
 
 .css-v1wsdu-MuiStack-root>:not(style)+:not(style) {
     margin-top:0 !important;
+}
+
+.results-container {
+    min-height: 75vh;
 }
