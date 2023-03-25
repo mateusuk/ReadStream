@@ -98,19 +98,25 @@ import Cards from '../Cards/Cards';
             marginTop='2.5rem'
             paddingTop='2rem'
           >
-        {searchResults.map(book => (
-          <Grid item xs={3}>
-            <Cards 
-              key={book.id} 
-              title={book.volumeInfo.title} 
-              author={book.volumeInfo.authors} 
-              description={book.volumeInfo.description} 
-              link={book.volumeInfo.previewLink}
-              category={book.volumeInfo.categories}
-              image={book.volumeInfo.imageLinks?.thumbnail}
-             />
-            </Grid>
-          ))}
+
+          {searchResults.map((book => {
+            if (book.volumeInfo.imageLinks?.thumbnail !== undefined) {
+              return (
+                <Grid item xs={3}>
+                  <Cards 
+                    key={book.id} 
+                    title={book.volumeInfo.title} 
+                    author={book.volumeInfo.authors} 
+                    description={book.volumeInfo.description} 
+                    link={book.volumeInfo.previewLink}
+                    image={book.volumeInfo.imageLinks?.thumbnail}
+                  />
+                </Grid>
+                )
+              }
+              return null;
+            }))
+          }
           </Grid>
         </Box>
       </div>

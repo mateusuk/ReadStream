@@ -55,7 +55,6 @@ function Cards(props) {
     setExpanded(!expanded);   
   };
 
-  if(props.image !== undefined && props.link !== undefined) {
     return (
       <StyledEngineProvider injectFirst>
         <Card className='card' sx={{ maxWidth: 200 }}>
@@ -101,7 +100,6 @@ function Cards(props) {
         </Card>
       </StyledEngineProvider>
     );
-  }
-}
+ }
 
 export default Cards;
