@@ -16,6 +16,7 @@ import Cards from '../Cards/Cards';
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null);
+  const scrollToRef = useRef();
 
    const handleSearch = async () => {
     try {
@@ -41,14 +42,21 @@ import Cards from '../Cards/Cards';
     setSelectedOption(value);
   };
 
+  const handleScroll = () => {
+    if (searchTerm.length === 0) {
+      return error;
+    } else {
+      setError(null);
+      scrollToRef.current.scrollIntoView();
+    }
+  }
+
   const handleKeyPress = async (event) => {
     if (event.key === 'Enter') {
       await handleSearch();
-      scrollToRef.current.scrollIntoView();
+      handleScroll();
     }
-  };
-
-  const scrollToRef = useRef();
+  }
 
   return (
     <div>
@@ -63,10 +71,15 @@ import Cards from '../Cards/Cards';
             onChange={handleChange}
           
             renderInput={(params) => (
-              <TextField
+              <TextField sx={{ paddingLeft: '10px' 
+            }}
                 {...params}
-                label="Search Book"
-                variant="outlined"
+                label='Search Book' 
+                InputLabelProps = {{ style: { color: 'black', 
+                                              fontWeight: 'bold', 
+                                              fontStyle: 'italic' }
+                                  }}
+                variant='standard'
                 value={searchTerm}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
@@ -74,11 +87,12 @@ import Cards from '../Cards/Cards';
                   ...params.InputProps,
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Button onClick={ async () => { await handleSearch(); scrollToRef.current.scrollIntoView(); }} >
+                      <Button onClick={ async () => { await handleSearch(); handleScroll(); }} >
                         <SearchIcon />
                       </Button>
                     </InputAdornment>
                   ),
+                  disableUnderline: true
                 }}
               />
             )}
