@@ -114,14 +114,18 @@ import Cards from '../Cards/Cards';
           >
 
           {searchResults.map((book => {
-            if (book.volumeInfo.imageLinks?.thumbnail !== undefined) {
+            if (book.volumeInfo.imageLinks?.thumbnail !== undefined &&
+                book.volumeInfo.title &&
+                book.volumeInfo.authors &&
+                book.volumeInfo.categories !== undefined &&
+                book.volumeInfo.previewLink) {
               return (
                 <Grid item xs={3}>
                   <Cards 
                     key={book.id} 
                     title={book.volumeInfo.title} 
                     author={book.volumeInfo.authors} 
-                    description={book.volumeInfo.description} 
+                    category={book.volumeInfo.categories} 
                     link={book.volumeInfo.previewLink}
                     image={book.volumeInfo.imageLinks?.thumbnail}
                   />
