@@ -96,7 +96,9 @@ import Cards from '../Cards/Cards';
             direction='row'
             marginBottom='5rem'
             marginTop='2.5rem'
+            paddingTop='2rem'
           >
+
           {searchResults.map((book => {
             if (book.volumeInfo.imageLinks?.thumbnail !== undefined) {
               return (
