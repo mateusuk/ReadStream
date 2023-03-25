@@ -55,53 +55,50 @@ function Cards(props) {
     setExpanded(!expanded);   
   };
 
-  if(props.image !== undefined && props.link !== undefined) {
-    return (
-      <StyledEngineProvider injectFirst>
-        <Card className='card' sx={{ maxWidth: 200, minHeight: 200}}>
-          <CardMedia 
-            component='img'
-            image={props.image}
-            alt='book card'
-          />
-          <CardActions disableSpacing>
-            <IconButton 
-              aria-label='add to favorites'
-              onClick={handleFavoriteClick}
-              color={isFavorite ? 'error' : 'default'}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <ExpandMore 
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label='show more'
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
-          </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent  sx={{textAlign: 'center'}}>
-                <Typography className='title'>{props.title}</Typography>
-                <Typography className='author'>{props.author}</Typography>
-                <Typography paragraph sx={{textAlign: 'justify', paddingTop: '5px'}}>
-                    {props.description}
-                </Typography>
-                <Button href={props.link} 
-                        target='_blank' 
-                        rel='noopener noreferrer'
-                        >
-                        Preview
-                </Button>
-              </CardContent>
-            </Collapse>
+  return (
+    <StyledEngineProvider injectFirst>
+      <Card className='card' sx={{ maxWidth: 200, minHeight: 200}}>
+        <CardMedia 
+          component='img'
+          image={props.image}
+          alt='book card'
+        />
+        <CardActions disableSpacing>
+          <IconButton 
+            aria-label='add to favorites'
+            onClick={handleFavoriteClick}
+            color={isFavorite ? 'error' : 'default'}
+          >
+            <FavoriteIcon />
+          </IconButton>
+          <ExpandMore 
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label='show more'
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent  sx={{textAlign: 'center'}}>
+              <Typography className='title'>{props.title}</Typography>
+              <Typography className='author'>{props.author}</Typography>
+              <Typography paragraph sx={{textAlign: 'justify', paddingTop: '5px'}}>
+                  {props.description}
+              </Typography>
+              <Button 
+                href={props.link} 
+                target='_blank' 
+                rel='noopener noreferrer'
+              >
+                Preview
+              </Button>
+            </CardContent>
+          </Collapse>
         </Card>
-      </StyledEngineProvider>
-    );
-  }
-
-  
+    </StyledEngineProvider>
+  );
 }
 
 export default Cards;
