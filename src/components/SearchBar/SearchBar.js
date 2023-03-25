@@ -106,6 +106,7 @@ import Cards from '../Cards/Cards';
               author={book.volumeInfo.authors} 
               description={book.volumeInfo.description} 
               link={book.volumeInfo.previewLink}
+              category={book.volumeInfo.categories}
               image={book.volumeInfo.imageLinks?.thumbnail}
              />
             </Grid>
