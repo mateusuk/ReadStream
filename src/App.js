@@ -11,10 +11,11 @@ function App() {
       <div className="App">
         <NavBar />
         <Routes>
+          <Route path="/" element={<SearchBar/>} />
           <Route path="/favorites" element={<FavoritePage/>} />
           {/* <Route path="/bestsellers" element={<Bestsellers/>} /> */}
         </Routes>
-        <SearchBar/>
+        {/* <SearchBar/> */}
         <Footer />
       </div>
     </Router>
