@@ -88,7 +88,7 @@ import Cards from '../Cards/Cards';
                   endAdornment: (
                     <InputAdornment position="end">
                       <Button onClick={ async () => { await handleSearch(); handleScroll(); }} >
-                        <SearchIcon />
+                        <SearchIcon className='search-icon' />
                       </Button>
                     </InputAdornment>
                   ),
