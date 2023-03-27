@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import Background from './Background.png'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const pages = ['Favorites', 'Bestsellers'];
@@ -40,8 +40,8 @@ function ResponsiveAppBar() {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={Link}
+                        to="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -88,7 +88,7 @@ function ResponsiveAppBar() {
                         {pages.map((page) => (
                             <MenuItem key={page} onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">
-                                {page} {/* <Link style={{textDecoration: 'none', color: 'black'}} to={`/${page}`}>{page}</Link> */}
+                                <Link style={{textDecoration: 'none', color:'black'}} to={`/${page}`}>{page}</Link>
                                 </Typography>
                             </MenuItem>
                         ))}
@@ -99,8 +99,8 @@ function ResponsiveAppBar() {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={Link}
+                        to="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -121,7 +121,7 @@ function ResponsiveAppBar() {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'black', display: 'block' }}
                         >
-                            {page} {/* <Link style={{ textDecoration: 'none', color: 'white' }} to={`/${page}`}>{page}</Link> */}
+                            <Link style={{textDecoration: 'none', color:'black'}} to={`/${page}`}>{page}</Link>
                         </Button>
                         ))}
                     </Box>
