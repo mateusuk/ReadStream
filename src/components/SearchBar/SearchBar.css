@@ -33,6 +33,9 @@
 }
 
 .MuiSvgIcon-root {
-    color: black;
     transform: scale(1.4);
+}
+
+.search-icon {
+    color: black;
 }

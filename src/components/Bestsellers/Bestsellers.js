@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from "framer-motion";
-import './Carousel.css';
+import './Bestsellers.css';
 import { Button } from '@mui/material';
 import image1 from "../../assets/img1.jpg";
 import image2 from "../../assets/img2.jpg";
@@ -58,7 +58,7 @@ const slides = [
 
 const innerWidth = window.innerWidth;
 
-const Carousel = () => {
+const Bestsellers = () => {
     const [width, setWidth] = useState(5410 - innerWidth);
     const carousel = useRef();
 
@@ -111,4 +111,4 @@ const Carousel = () => {
     )
 };
 
-export default Carousel;
+export default Bestsellers;

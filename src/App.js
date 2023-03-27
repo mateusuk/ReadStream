@@ -2,8 +2,9 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import SearchBar from './components/SearchBar/SearchBar';
-import Footer from './components/Footer/Footer';
+import Bestsellers from './components/Bestsellers/Bestsellers';
 import FavoritePage from './components/FavoritePage/FavoritePage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -13,9 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SearchBar/>} />
           <Route path="/favorites" element={<FavoritePage/>} />
-          {/* <Route path="/bestsellers" element={<Bestsellers/>} /> */}
+          <Route path="/bestsellers" element={<Bestsellers/>} />
         </Routes>
-        {/* <SearchBar/> */}
         <Footer />
       </div>
     </Router>
