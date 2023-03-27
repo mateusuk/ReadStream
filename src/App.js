@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import Footer from './components/Footer/Footer';
 import FavoritePage from './components/FavoritePage/FavoritePage';
+import Bestsellers from './components/Bestsellers/Bestsellers';
 
 function App() {
   return (
@@ -13,9 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SearchBar/>} />
           <Route path="/favorites" element={<FavoritePage/>} />
-          {/* <Route path="/bestsellers" element={<Bestsellers/>} /> */}
+          <Route path="/bestsellers" element={<Bestsellers/>} />
         </Routes>
-        {/* <SearchBar/> */}
         <Footer />
       </div>
     </Router>
