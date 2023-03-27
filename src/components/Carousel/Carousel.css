@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
+
+.bestsellersText {
+    font-size: 1.6rem;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+.timesLink {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+}
+
+div.App div.carousel div.inner-carousel {
+    display: flex;
+}
+
+.carousel {
+    cursor: grab;
+    overflow: hidden;
+    min-width: 100%;
+    
+
+}
+
+.item {
+    
+    padding: 50px 0;
+}
+
+.item img {
+    pointer-events: none;
+    width: 500px;
+    height: auto;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.499) 6px 6px 15px;
+}
