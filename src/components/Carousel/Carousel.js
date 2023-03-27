@@ -55,3 +55,58 @@ const slides = [
         article: 'https://www.nytimes.com/2020/07/31/books/review-caste-isabel-wilkerson-origins-of-our-discontents.html?searchResultPosition=1'
     },
 ];
+
+const innerWidth = window.innerWidth;
+
+const Carousel = () => {
+    const [width, setWidth] = useState(5410 - innerWidth);
+    const carousel = useRef();
+
+    useEffect(() => {
+
+    const resizeHandler = () => {
+        setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    };
+
+    const observer = new MutationObserver(() => {
+        if (carousel.current.offsetWidth > 0) {
+        resizeHandler();
+        observer.disconnect();
+        }
+    });
+
+    observer.observe(carousel.current, { childList: true });
+    window.addEventListener('resize', resizeHandler);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('resize', resizeHandler);
+        };
+    }, []);
+
+    return (
+        <>
+            </p>
+            <motion.div 
+                ref={carousel} 
+                className='carousel' 
+                whileTap={{cursor: 'grabbing'}}
+            >
+                <motion.div 
+                    drag="x" 
+                    dragConstraints={{ right: 0, left: -width }} 
+                    className='inner-carousel'
+                >
+                    {slides.map((slide) => {
+                        return (
+                            <motion.div whileHover={{scale: 1.1, transition: {duration: 0.5}}} className='item' key={slide} >
+                                <Button className='carouselButton' href={slide.article} target={'_blank'} sx={{color: "whitesmoke"}}><img src={slide.image} alt='' /></Button>
+                            </motion.div>
+                        )
+                    })}
+                </motion.div>
+            </motion.div>
+        </>
+    )
+};
+
+export default Carousel;
