@@ -55,15 +55,16 @@ function Cards(props) {
     setExpanded(!expanded);   
   };
 
-  if(props.image !== undefined && props.link !== undefined) {
     return (
       <StyledEngineProvider injectFirst>
-        <Card className='card' sx={{ maxWidth: 200, minHeight: 200}}>
-          <CardMedia 
-            component='img'
-            image={props.image}
-            alt='book card'
-          />
+        <Card className='card' sx={{ maxWidth: 200 }}>
+          <a href={props.link} target='_blank' rel='noreferrer'> 
+            <CardMedia sx={{ height: 300 }}
+              component='img'
+              image={props.image}
+              alt='book card'
+            /> 
+          </a>
           <CardActions disableSpacing>
             <IconButton 
               aria-label='add to favorites'
@@ -84,13 +85,13 @@ function Cards(props) {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent  sx={{textAlign: 'center'}}>
                 <Typography className='title'>{props.title}</Typography>
-                <Typography className='author'>{props.author}</Typography>
-                <Typography paragraph sx={{textAlign: 'justify', paddingTop: '5px'}}>
-                    {props.description}
-                </Typography>
+                <Typography className='author'>By {props.author}</Typography>
+                <Typography className='category'>Category: {props.category}</Typography>
                 <Button href={props.link} 
                         target='_blank' 
                         rel='noopener noreferrer'
+                        className='preview'
+                        sx={{ fontWeight: 'bold' }}
                         >
                         Preview
                 </Button>
@@ -99,9 +100,6 @@ function Cards(props) {
         </Card>
       </StyledEngineProvider>
     );
-  }
-
-  
-}
+ }
 
 export default Cards;

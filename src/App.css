@@ -5,6 +5,10 @@
   font-family: sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   min-height: 100vh;
   display: flex;

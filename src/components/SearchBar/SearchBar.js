@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./SearchBar.css";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -11,14 +11,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Cards from '../Cards/Cards';
 
-
  function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null);
+  const scrollToRef = useRef();
 
-  
    const handleSearch = async () => {
     try {
       const data = await searchBooks(searchTerm || selectedOption);
@@ -43,11 +42,21 @@ import Cards from '../Cards/Cards';
     setSelectedOption(value);
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
+  const handleScroll = () => {
+    if (searchTerm.length === 0) {
+      return error;
+    } else {
+      setError(null);
+      scrollToRef.current.scrollIntoView();
     }
-  };
+  }
+
+  const handleKeyPress = async (event) => {
+    if (event.key === 'Enter') {
+      await handleSearch();
+      handleScroll();
+    }
+  }
 
   return (
     <div>
@@ -62,10 +71,15 @@ import Cards from '../Cards/Cards';
             onChange={handleChange}
           
             renderInput={(params) => (
-              <TextField
+              <TextField sx={{ paddingLeft: '10px' 
+            }}
                 {...params}
-                label="Search Book"
-                variant="outlined"
+                label='Search Book' 
+                InputLabelProps = {{ style: { color: 'black', 
+                                              fontWeight: 'bold', 
+                                              fontStyle: 'italic' }
+                                  }}
+                variant='standard'
                 value={searchTerm}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
@@ -73,11 +87,12 @@ import Cards from '../Cards/Cards';
                   ...params.InputProps,
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Button onClick={handleSearch} >
+                      <Button onClick={ async () => { await handleSearch(); handleScroll(); }} >
                         <SearchIcon />
                       </Button>
                     </InputAdornment>
                   ),
+                  disableUnderline: true
                 }}
               />
             )}
@@ -90,30 +105,42 @@ import Cards from '../Cards/Cards';
         <Box sx={{ maxWidth: '85%', marginLeft: '12%' }}>
           <Grid
             container
+            ref={scrollToRef}
             spacing={2}
             direction='row'
-            marginTop='5rem'
             marginBottom='5rem'
+            marginTop='2.5rem'
+            paddingTop='2rem'
           >
-        {searchResults.map(book => (
-          <Grid item xs={3}>
-            <Cards 
-              key={book.id} 
-              title={book.volumeInfo.title} 
-              author={book.volumeInfo.authors} 
-              description={book.volumeInfo.description} 
-              link={book.volumeInfo.previewLink}
-              image={book.volumeInfo.imageLinks?.thumbnail}
-             />
-            </Grid>
-          ))}
+
+          {searchResults.map((book => {
+            if (book.volumeInfo.imageLinks?.thumbnail !== undefined &&
+                book.volumeInfo.title &&
+                book.volumeInfo.authors &&
+                book.volumeInfo.categories !== undefined &&
+                book.volumeInfo.previewLink) {
+              return (
+                <Grid item xs={3}>
+                  <Cards 
+                    key={book.id} 
+                    title={book.volumeInfo.title} 
+                    author={book.volumeInfo.authors} 
+                    category={book.volumeInfo.categories} 
+                    link={book.volumeInfo.previewLink}
+                    image={book.volumeInfo.imageLinks?.thumbnail}
+                  />
+                </Grid>
+                )
+              }
+              return null;
+            }))
+          }
           </Grid>
         </Box>
       </div>
     </div>
   );
 }
-
 
 const books = [
   { title: 'The Shawshank Redemption'},
