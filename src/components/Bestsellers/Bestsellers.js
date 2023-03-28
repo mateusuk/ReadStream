@@ -12,6 +12,7 @@ import image7 from "../../assets/img7.jpg";
 import image8 from "../../assets/img8.jpg";
 import image9 from "../../assets/img9.jpg";
 import image10 from "../../assets/img10.jpg";
+import { keyframes } from 'styled-components';
 
 const slides = [
     {
@@ -92,16 +93,32 @@ const Bestsellers = () => {
                 ref={carousel} 
                 className='carousel' 
                 whileTap={{cursor: 'grabbing'}}
+                
             >
                 <motion.div 
                     drag="x" 
                     dragConstraints={{ right: 0, left: -width }} 
                     className='inner-carousel'
+                    animate={{
+                        x: -(5390 - innerWidth)}} 
+                        transition={{ duration: 35}}
                 >
                     {slides.map((slide) => {
                         return (
-                            <motion.div whileHover={{scale: 1.1, transition: {duration: 0.5}}} className='item' key={slide} >
-                                <Button className='carouselButton' href={slide.article} target={'_blank'} sx={{color: "whitesmoke"}}><img src={slide.image} alt='' /></Button>
+                            <motion.div whileHover={{
+                                scale: 1.1, 
+                                transition: {duration: 0.4}}}  
+                                className='item' 
+                                key={slide} 
+                            >
+                                <Button 
+                                    className='carouselButton' 
+                                    href={slide.article} 
+                                    target={'_blank'} 
+                                    sx={{color: "whitesmoke"}}
+                                >
+                                        <img src={slide.image} alt='' />
+                                </Button>
                             </motion.div>
                         )
                     })}
