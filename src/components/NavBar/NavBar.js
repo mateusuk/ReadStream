@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import Background from '../../assets/Background.png'
+import Background from './Background.png'
 import { Link } from 'react-router-dom';
 
 
@@ -31,6 +31,7 @@ function ResponsiveAppBar() {
         <AppBar 
         position="sticky"
         sx={{
+            background: 'transparent',
             backgroundImage: `url(${Background})`,
             mb: 3,
         }}>

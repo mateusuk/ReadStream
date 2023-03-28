@@ -13,6 +13,6 @@ html {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('/src/assets/Background.png');
+  background-image: url('Background.png');
   background-attachment: fixed;
 }
