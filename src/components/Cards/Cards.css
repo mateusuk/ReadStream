@@ -56,3 +56,16 @@
     font-size: 9pt;
     margin-top: 0.5rem;
 }
+
+@media (max-width: 480px) {
+
+    .card {
+        height: 120px !important;
+        width: 80px;
+        margin: 0.5rem;
+    }
+
+    .results-container {
+        padding-right: 2.5rem;
+    }
+}
