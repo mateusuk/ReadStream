@@ -12,7 +12,6 @@ import image7 from "../../assets/img7.jpg";
 import image8 from "../../assets/img8.jpg";
 import image9 from "../../assets/img9.jpg";
 import image10 from "../../assets/img10.jpg";
-import { keyframes } from 'styled-components';
 
 const slides = [
     {
