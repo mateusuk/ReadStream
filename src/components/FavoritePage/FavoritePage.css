@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
+
+div.results-container p.FavoritesText {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
