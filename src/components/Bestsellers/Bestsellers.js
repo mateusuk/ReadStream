@@ -84,7 +84,11 @@ const Bestsellers = () => {
     }, []);
 
     return (
-        <>
+        <motion.div
+        intial={{opacity: 0, x: 100}}
+        animate={{opacity: 1, x: 0}}
+        exit={{opacity: 0, x: -100, transition: {duration: 0.5}}}
+        >
             <p className='bestsellersText'>
             Welcome to our website! We understand that reading can be a daunting task, requiring effort and time. Choosing a book from the vast market can be overwhelming, and the fear of investing time in an underwhelming read can be discouraging. This is precisely why we have created this page! We aim to guide you towards the <a className='timesLink' rel="noreferrer" target={'_blank'} href='https://www.nytimes.com/books/best-sellers/'>bestsellers section of The New York Times</a>, where you can find books that have already proven their worth. By selecting any of these books, you can be confident that you will not be disappointed. In addition to our Bestsellers page, our team has also put together a list of personal recommendations. We have handpicked these books based on our own experiences, and we hope you'll find them as enjoyable as we did. Happy reading!
             </p>
@@ -123,7 +127,7 @@ const Bestsellers = () => {
                     })}
                 </motion.div>
             </motion.div>
-        </>
+        </motion.div>
     )
 };
 

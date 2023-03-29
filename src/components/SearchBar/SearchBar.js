@@ -10,6 +10,7 @@ import { searchBooks } from '../../utils/API';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Cards from '../Cards/Cards';
+import { motion } from "framer-motion";
 
  function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,7 +60,11 @@ import Cards from '../Cards/Cards';
   }
 
   return (
-    <div>
+    <motion.div
+      intial={{opacity: 0, x: 100}}
+      animate={{opacity: 1, x: 0}}
+      exit={{opacity: 0, x: -100, transition: {duration: 0.5}}}
+    >
       <div className="container">
         <Stack spacing={2} sx={{ width: 800 }}>
           <Autocomplete
@@ -138,7 +143,7 @@ import Cards from '../Cards/Cards';
           </Grid>
         </Box>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
