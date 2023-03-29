@@ -47,9 +47,9 @@ function FavoritePage(){
                             <Cards 
                                 key={item.id} 
                                 title={item.title} 
-                                author={item.authors} 
-                                category={item.categories} 
-                                link={item.previewLink}
+                                author={item.author} 
+                                category={item.category} 
+                                link={item.link}
                                 image={item.image}
                             />
                         </Grid>
