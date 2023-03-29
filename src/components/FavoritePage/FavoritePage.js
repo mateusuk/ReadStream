@@ -1,12 +1,9 @@
-import './FavoritePage.css';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Cards from '../Cards/Cards';
 import { motion } from "framer-motion";
-
-
 
 function FavoritePage(){
 
